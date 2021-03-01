@@ -1,0 +1,17 @@
+language: elixir
+elixir:
+  - 1.11
+otp_release:
+  - 23
+
+addons:
+  postgres: '9.4'
+
+services:
+  - postgressql
+
+script:
+  - mix format --check-formatted --dry-run
+  - mix credo --strict
+  - mix sobelow --config
+  - mix coveralls.travis
