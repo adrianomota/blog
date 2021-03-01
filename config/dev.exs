@@ -5,7 +5,7 @@ config :blog, Blog.Repo,
   username: "postgres",
   password: "postgres",
   database: "blog_dev",
-  hostname: "localhost",
+  hostname: "192.168.15.88",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 
