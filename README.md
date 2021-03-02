@@ -1,5 +1,5 @@
-# log Elixir Example [![Build Status](https://travis-ci.com/adrianomota/blog.svg?branch=master)](https://travis-ci.com/adrianomota/blog)(https://app.codecov.io/gh/adrianomota/blog/branch/master/graph/badge.svg?token=)](https://app.codecov.io/gh/adrianomota/blog)
-=======================
+# Blog Elixir Example [![Build Status](https://travis-ci.org/codecov/example-elixir.svg?branch=master)](https://travis-ci.org/codecov/example-elixir) [![codecov](https://codecov.io/gh/codecov/example-elixir/branch/master/graph/badge.svg?token=)](https://codecov.io/gh/codecov/example-elixir)
+
 
 To start your Phoenix server:
 
