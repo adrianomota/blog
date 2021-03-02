@@ -15,3 +15,6 @@ script:
   - mix credo --strict
   - mix sobelow --config
   - MIX_ENV=test mix coveralls.json
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
