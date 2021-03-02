@@ -1,4 +1,4 @@
-# Blog Elixir Example
+# Blog Elixir Example  https://travis-ci.com/adrianomota/blog.svg?branch=master
 =======================
 
 To start your Phoenix server:
