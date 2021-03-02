@@ -1,4 +1,4 @@
-# Blog Elixir Example  [![Build Status](https://travis-ci.com/adrianomota/blog.svg?branch=master)](https://travis-ci.com/adrianomota/blog)
+# Blog Elixir Example  [![Build Status](https://travis-ci.com/adrianomota/blog.svg?branch=master)](https://travis-ci.com/adrianomota/blog) [![codecov](https://app.codecov.io/gh/adrianomota/blog/branch/master/graph/badge.svg?token=)](https://app.codecov.io/gh/adrianomota/blog)
 =======================
 
 To start your Phoenix server:
