@@ -1,4 +1,5 @@
-# Blog
+[Blog][1] Elixir Example
+=======================
 
 To start your Phoenix server:
 
