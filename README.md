@@ -1,4 +1,4 @@
-# Blog Elixir Example [![Build Status](https://travis-ci.org/codecov/example-elixir.svg?branch=master)](https://travis-ci.org/codecov/example-elixir) [![codecov](https://codecov.io/gh/codecov/example-elixir/branch/master/graph/badge.svg?token=)](https://codecov.io/gh/codecov/example-elixir)
+# Blog Elixir Example [![Build Status](https://travis-ci.com/adrianomota/blog.svg?branch=master)](https://travis-ci.com/adrianomota/blog) [![codecov](https://codecov.io/gh/codecov/example-elixir/branch/master/graph/badge.svg?token=)](https://codecov.io/gh/codecov/example-elixir)
 
 
 To start your Phoenix server:
