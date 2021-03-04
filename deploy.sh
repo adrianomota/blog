@@ -1,9 +1,13 @@
-
-#!/usr/bin/env bash
-
-echo "start gigalixir Deploy........."
+#!/bin/sh
+echo "starting deploy process"
 git remote add gigalixir https://git.gigalixir.com/blogelxpro.git
-git push -f gigalixir HEAD:refs/heads/master
-echo "finish gigalixir Deploy........."
-
-
+BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $TRAVIS_BRANCH; else echo $TRAVIS_PULL_REQUEST_BRANCH; fi)
+echo "TRAVIS_BRANCH=$TRAVIS_BRANCH, PR=$PR"
+echo "------------------------------------"
+echo "BRANCH=$BRANCH"
+if [ "$BRANCH" == "master" ]; then
+  echo "Pushing HEAD to master branch on Gigalixir."
+  git push -f gigalixir HEAD:master --verbose
+  echo "Deploy completed."
+fi
+echo "Exiting."
