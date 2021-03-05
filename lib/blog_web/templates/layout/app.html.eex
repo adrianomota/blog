@@ -13,7 +13,7 @@
       <section class="container">
         <nav role="navigation">
           <ul>
-           Adriano Blog
+           Travis
           </ul>
         </nav>
         <a href="https://phoenixframework.org/" class="phx-logo">
@@ -21,10 +21,6 @@
         </a>
       </section>
     </header>
-    <main role="main" class="container">
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
-      <%= @inner_content %>
-    </main>
+
   </body>
 </html>
