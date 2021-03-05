@@ -12,8 +12,7 @@ services:
   - postgressql
 
 before_install:
-  - sudo apt-get install -y python3 python3-pip
-  - pip install --upgrade pip
+  - sudo apt-get install -y python3 python3-pip --upgrade pip3
   - pip3 install gigalixir
   - gigalixir login -e "$GIGALIXIR_EMAIL" -p "$GIGALIXIR_PASSWORD" -y
   - gigalixir git:remote $GIGALIXIR_APP_NAME
