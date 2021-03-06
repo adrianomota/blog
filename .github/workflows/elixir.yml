@@ -56,5 +56,14 @@ jobs:
       with:
         args: -s https://codecov.io/bash
 
+  Deploy:
+    needs: build
+    runs-on: ubuntu-latest
 
+    steps:
+      - uses: actions/checkout@v2
+      - run: sudo pip install gigalixir --ignore-installed six
+      - run: gigalixir login -e "${{ secrets.GIGALIXIR_EMAIL }}" -y -p "${{ secrets.GIGALIXIR_PASSWORD }}"
+      - run: gigalixir git:remote ${{ secrets.GIGALIXIR_APP }}
+      - run: git push -f gigalixir HEAD:refs/heads/master
 
