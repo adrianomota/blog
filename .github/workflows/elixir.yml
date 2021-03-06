@@ -54,7 +54,7 @@ jobs:
     - name: Send codecov
       uses: wei/curl@master
       with:
-        url: -s https://codecov.io/bash
+        args: -s https://codecov.io/bash
 
 
 
