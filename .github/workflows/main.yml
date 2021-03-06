@@ -161,8 +161,13 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Install Python
+        uses: actions/setup-python@v2
+          with:
+            python-version: 3.8.1
+
       - name: Deploy to Production
-        uses: mhanberg/gigalixir-action@v0.4.0
+        uses: mhanberg/gigalixir-action@<current release>
         with:
           GIGALIXIR_USERNAME: ${{ secrets.GIGALIXIR_USERNAME }}
           GIGALIXIR_PASSWORD: ${{ secrets.GIGALIXIR_PASSWORD }}
