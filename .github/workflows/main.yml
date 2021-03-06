@@ -10,7 +10,7 @@ jobs:
     name: Update Ubuntu
     runs-on: ubuntu-latest
     steps:
-      - run: sudo apt-get upgrade && apt-get update
+      - run: sudo apt-get update
 
   test:
     needs: update
