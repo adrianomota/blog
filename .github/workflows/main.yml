@@ -6,8 +6,8 @@ on:
       - master
 
 jobs:
-  - name: update
-    run: sudo apt-get upgrade && apt-get update
+  update:
+     - run: sudo apt-get upgrade && apt-get update
 
   test:
     needs: update
