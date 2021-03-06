@@ -7,7 +7,7 @@ on:
 
 jobs:
   update:
-     - run: sudo apt-get upgrade && apt-get update
+    run: sudo apt-get upgrade && apt-get update
 
   test:
     needs: update
