@@ -1,4 +1,4 @@
-# Blog Elixir Example [![Build Actions Status](https://github.com/adrianomota/blog/workflows/blog_ci/badge.svg)](https://github.com/adrianomota/blog/actions) [![codecov](https://codecov.io/gh/adrianomota/blog/branch/master/graph/badge.svg?token=WR6THUC2HT)](https://codecov.io/gh/adrianomota/blog)
+# Blog Elixir Example [![Build Actions Status](https://github.com/adrianomota/blog/workflows/phoenix-master/badge.svg)](https://github.com/adrianomota/blog/actions) [![codecov](https://codecov.io/gh/adrianomota/blog/branch/master/graph/badge.svg?token=WR6THUC2HT)](https://codecov.io/gh/adrianomota/blog)
 
 =======================
 

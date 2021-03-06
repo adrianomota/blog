@@ -1,4 +1,4 @@
-name: blog_ci
+name: phoenix-master
 
 on:
   push:
