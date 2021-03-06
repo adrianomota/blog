@@ -1,4 +1,4 @@
-name: Elixir - Phoenix CI
+name: blog_ci
 
 on:
   push:
