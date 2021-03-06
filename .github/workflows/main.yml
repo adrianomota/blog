@@ -21,9 +21,9 @@ jobs:
     steps:
       - uses: actions/checkout@v1.0.0
       - uses: actions/setup-elixir@v1.0.0
-      with:
-        otp-version: 23.x
-        elixir-version: 1.11.x
+        with:
+          otp-version: 23.x
+          elixir-version: 1.11.x
       - run: mix do deps.get, compile
       - run: mix test
 
