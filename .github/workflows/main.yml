@@ -4,7 +4,7 @@ on: push
 
 jobs:
   test:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-18.04
 
     env:
       MIX_ENV: test
@@ -27,7 +27,7 @@ jobs:
       - uses: actions/setup-elixir@v1.0.0
         with:
           otp-version: 22.2.6
-          elixir-version: 1.10.1
+          elixir-version: 1.10.
       - uses: actions/cache@v1
         with:
           path: deps
