@@ -7,6 +7,8 @@ on:
 
 jobs:
   update:
+    name: Update Ubuntu
+    runs-on: ubuntu-latest
     steps:
       - run: sudo apt-get upgrade && apt-get update
 
