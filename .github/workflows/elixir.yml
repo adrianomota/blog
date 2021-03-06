@@ -51,7 +51,5 @@ jobs:
       run: mix format --check-formatted --dry-run
     - name: Run coveralls
       run: mix coveralls.json
-      uses: wei/curl@master
-      with:
-        args: -s https://codecov.io/bash)
+
 
