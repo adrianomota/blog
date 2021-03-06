@@ -4,8 +4,13 @@ on:
   push:
     branches:
       - master
+
 jobs:
+  - name: update
+    run: sudo apt-get upgrade && apt-get update
+
   test:
+    needs: update
     runs-on: ubuntu-latest
     name: OTP ${{matrix.otp}} / Elixir ${{matrix.elixir}}
     strategy:
