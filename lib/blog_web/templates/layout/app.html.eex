@@ -12,12 +12,16 @@
   <body>
     <nav>
         <div class="nav-wrapper">
-          <a href="#" class="brand-logo">Meu Blog</a>
+          <%= link "Meu blog", to: Routes.post_path(@conn, :index) %>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="sass.html">Bem vindo ! Aluno</a></li>
-            <li><a href="badges.html">Postar</a></li>
             <li>
-              <%= link "Posts", to: Routes.post_path(@conn, :index) %>
+                <%= link "Bem vindo !", to: Routes.post_path(@conn, :index) %>
+            </li>
+            <li>
+                <%= link "Postar", to: Routes.post_path(@conn, :new) %>
+            </li>
+            <li>
+                <%= link "Posts", to: Routes.post_path(@conn, :index) %>
             </li>
           </ul>
         </div>

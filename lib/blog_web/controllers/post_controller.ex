@@ -1,43 +1,39 @@
 defmodule BlogWeb.PostController do
   use BlogWeb, :controller
 
-  alias Blog.{Posts.Post, Repo}
-
   def index(conn, _params) do
-    posts = Repo.all(Post)
+    posts = Blog.Posts.list()
 
     render(conn, "index.html", posts: posts)
   end
 
   def show(conn, %{"id" => id}) do
-    post = Repo.get(Post, id)
+    post = Blog.Posts.get(id)
     render(conn, "show.html", post: post)
   end
 
   def new(conn, _params) do
-    changeset = Post.changeset(%Post{})
+    changeset = Blog.Posts.get()
     render(conn, "new.html", changeset: changeset)
   end
 
   def edit(conn, %{"id" => id}) do
-    post_exists? = Repo.get(Post, id)
+    post_exists? = Blog.Posts.get(id)
 
     if post_exists? != nil do
-      changeset = Post.changeset(post_exists?)
+      changeset = Blog.Posts.get_changeset(post_exists?)
 
       conn
       |> render("edit.html", post: post_exists?, changeset: changeset)
     else
       conn
       |> put_flash(:info, "Post não existe")
-      |> render("index.html", posts: Repo.all(Post))
+      |> render("index.html", posts: Blog.Posts.list())
     end
   end
 
   def create(conn, %{"post" => post}) do
-    new_post = Post.changeset(%Post{}, post)
-
-    case Repo.insert(new_post) do
+    case Blog.Posts.create(post) do
       {:ok, post} ->
         conn
         |> put_flash(:info, "Post criado com sucesso")
@@ -49,40 +45,28 @@ defmodule BlogWeb.PostController do
   end
 
   def update(conn, %{"id" => id, "post" => post}) do
-    post_exists? = Repo.get(Post, id)
+    case Blog.Posts.update(id, post) do
+      {:ok, post} ->
+        conn
+        |> put_flash(:info, "Post atualizado com sucesso")
+        |> redirect(to: Routes.post_path(conn, :show, post))
 
-    if post_exists? != nil do
-      changeset = Post.changeset(post_exists?, post)
-
-      case Repo.update(changeset) do
-        {:ok, post} ->
-          conn
-          |> put_flash(:info, "Post atualizado com sucesso")
-          |> redirect(to: Routes.post_path(conn, :show, post))
-
-        {:error, changeset} ->
-          render(conn, "new.html", changeset: changeset)
-      end
-    else
-      conn
-      |> put_flash(:info, "Impossível atualizar o Post")
-      |> redirect(to: Routes.post_path(conn, :show, post))
+      {:error, changeset} ->
+        render(conn, "new.html", changeset: changeset)
     end
   end
 
   def delete(conn, %{"id" => id}) do
-    post = Repo.get(Post, id)
+    case Blog.Posts.delete(id) do
+      {:ok, _post} ->
+        conn
+        |> put_flash(:info, "Post excluído com sucesso")
+        |> redirect(to: Routes.post_path(conn, :index, Blog.Posts.list()))
 
-    if post != nil do
-      Repo.delete!(post)
-
-      conn
-      |> put_flash(:info, "Post excluído com sucesso")
-      |> redirect(to: Routes.post_path(conn, :index, Repo.all(Post)))
-    else
-      conn
-      |> put_flash(:error, "Post não existe!")
-      |> render("index.html", posts: Repo.all(Post))
+      {:error, changeset} ->
+        conn
+        |> put_flash(:error, "Post não existe!")
+        |> render("index.html", changeset: changeset)
     end
   end
 end
