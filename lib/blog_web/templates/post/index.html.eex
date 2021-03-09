@@ -1,13 +1,21 @@
 <ul class="collection with-header">
-  <li class="collection-header"><h4>Todos od Posts</h4></li>
+  <li class="collection-header"><h4>
+   <i class="material-icons blue-text">list</i> Meus Posts
+  </h4></li>
   <%= for post <- @posts do %>
     <li class="collection-item">
       <div><%=post.title %>
-        <a href="#!" class="secondary-content"><i class="material-icons green-text">send</i></a>
         <%= link to: Routes.post_path(@conn, :show, post), class: "secondary-content" do %>
+          <i class="material-icons black-text">short_text</i></a>
+        <% end %>
+
+        <%= link to: Routes.post_path(@conn, :edit, post), class: "secondary-content" do %>
           <i class="material-icons blue-text">edit</i></a>
         <% end %>
-          <a href="#!" class="secondary-content"><i class="material-icons red-text">delete</i></a>
+
+        <%= link to: Routes.post_path(@conn, :delete, post), method: :delete, data: [confirm: "Tem certeza ?"], class: "secondary-content" do %>
+          <i class="material-icons red-text">delete</i>
+         <% end %>
       </div>
     </li>
   <% end %>

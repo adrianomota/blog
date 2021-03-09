@@ -1,0 +1,6 @@
+<h5>
+ <i class="material-icons black-text">short_text</i>
+Editar post
+
+</h5>
+<%= render "form.html", Map.put(assigns, :action, Routes.post_path(@conn, :update, @post)) %>
