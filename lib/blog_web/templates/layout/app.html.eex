@@ -15,7 +15,7 @@
           <%= link "Meu blog", to: Routes.post_path(@conn, :index) %>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li>
-                <%= link "Bem vindo !", to: Routes.post_path(@conn, :index) %>
+                <%= link "Bem vindo", to: Routes.post_path(@conn, :index) %>
             </li>
             <li>
                 <%= link "Postar", to: Routes.post_path(@conn, :new) %>
