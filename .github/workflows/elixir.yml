@@ -52,6 +52,7 @@ jobs:
     - name: Run coveralls
       run: MIX_ENV=test mix coveralls.json
 
+    steps:
     - name: Codecov Report
     - uses: actions/checkout@master
     - uses: codecov/codecov-action@v1
