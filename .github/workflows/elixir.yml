@@ -50,7 +50,7 @@ jobs:
     - name: Run format
       run: mix format --check-formatted --dry-run
     - name: Run coveralls
-      run: mix coveralls.json
+      run: MIX_ENV=test mix coveralls.html
     - name: Send codecov
       uses: wei/curl@master
       with:
@@ -77,5 +77,5 @@ jobs:
         GIGALIXIR_PASSWORD: ${{ secrets.GIGALIXIR_PASSWORD }}
         GIGALIXIR_APP: ${{ secrets.GIGALIXIR_APP_NAME }} # Feel free to also put this in your secrets
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-        MIGRATIONS: false  # defaults to true
+        MIGRATIONS: true  # defaults to true
 
