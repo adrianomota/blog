@@ -1,5 +1,4 @@
 defmodule Blog.Posts do
-
   @moduledoc """
   Posts module
   """
