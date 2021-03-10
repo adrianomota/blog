@@ -50,7 +50,7 @@ jobs:
     - name: Run format
       run: mix format --check-formatted --dry-run
     - name: Run coveralls
-      run: MIX_ENV=test mix coveralls.json
+      run: mix coveralls.json
 
   Codecov:
     name: Codecov Report
@@ -61,7 +61,7 @@ jobs:
     - uses: codecov/codecov-action@v1
       with:
         token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
-        files: ./excoveralls.json # optional
+        files: ./coveralls.json # optional
         name: codecov-blog # optional
         fail_ci_if_error: true # optional (default = false)
         verbose: true # optional (default = false)
