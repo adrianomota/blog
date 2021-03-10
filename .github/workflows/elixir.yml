@@ -54,9 +54,11 @@ jobs:
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
       with:
-        token: ${{ secrets.CODECOV_TOKEN }}
-        fail_ci_if_error: true
-        verbose: true
+        token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+        files: excoveralls.json
+        directory: ./cover/
+        codecov_curl_args: -s
+        verbose: true # optional (default = false)
 
   Deploy:
     name: Deploy Gigalixir
