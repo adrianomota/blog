@@ -50,16 +50,17 @@ jobs:
     - name: Run format
       run: mix format --check-formatted --dry-run
     - name: Run coveralls
-      run: mix coveralls.json
-
-    - uses: codecov/codecov-action@v1
+      run: MIX_ENV=test mix coveralls.html
     - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v1
       with:
-        token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
-        files: ./coveralls.json # optional
-        name: codecov-blog # optional
-        fail_ci_if_error: true # optional (default = false)
-        verbose: true # optional (default = false)
+        token: ${{ secrets.CODECOV_TOKEN }}
+        files: ./excoveralls.json
+        directory: ./cover/
+        name: codecov-blog
+        fail_ci_if_error: true
+        path_to_write_report: ./coverage/codecov_report.txt
+        verbose: true
 
   Deploy:
     name: Deploy Gigalixir
