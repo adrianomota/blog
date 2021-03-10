@@ -52,11 +52,7 @@ jobs:
     - name: Run coveralls
       run: mix coveralls.json
 
-  Codecov:
-    name: Codecov Report
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
+    - name: Upload coverage to Codecov
     - uses: actions/checkout@master
     - uses: codecov/codecov-action@v1
       with:
