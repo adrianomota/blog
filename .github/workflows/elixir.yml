@@ -51,10 +51,16 @@ jobs:
       run: mix format --check-formatted --dry-run
     - name: Run coveralls
       run: MIX_ENV=test mix coveralls.json
-    - name: Send codecov
-      uses: wei/curl@master
+
+    steps:
+    - uses: actions/checkout@master
+    - uses: codecov/codecov-action@v1
       with:
-        args: -s https://codecov.io/bash
+        token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+        files: ./cover/excoveralls.json # optional
+        name: codecov-blog # optional
+        fail_ci_if_error: true # optional (default = false)
+        verbose: true # optional (default = false)
 
   Deploy:
     name: Deploy Gigalixir
