@@ -50,14 +50,13 @@ jobs:
     - name: Run format
       run: mix format --check-formatted --dry-run
     - name: Run coveralls
-      run: MIX_ENV=test mix coveralls.json
+      run: mix coveralls.json
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1.2.2
       with:
         token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
-        files: excoveralls.json
+        files: ./cover/excoveralls.json
         flags: exunit
-        directory: ./cover/
         codecov_curl_args: -s
         verbose: true # optional (default = false)
 
