@@ -10,3 +10,40 @@
     <% end %>
   </div>
 </div>
+
+
+<div class="row">
+  <form class="col s12">
+    <div class="row">
+      <div class="input-field col s10">
+        <i class="material-icons prefix">mode_edit</i>
+        <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
+        <label for="icon_prefix2">Comentário...</label>
+      </div>
+
+      <div class="input-field col s2">
+        <button class="btn waves-effect waves-light" type="submit" name="action">Enviar
+          <i class="material-icons right">sentiment_very_satisfied</i>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+<ul class="collection">
+  <li class="collection-item avatar">
+    <img src="https://avatars.githubusercontent.com/u/5923649?s=400&u=93002841650e779969576d1128d6433750013d19&v=4"
+      alt="" class="circle">
+    <span class="title">Title</span>
+    <p>Adriano Mota <br>
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+      standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a
+      type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+      remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
+      Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions
+      of Lorem Ipsum.
+    </p>
+    <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+  </li>
+</ul>
