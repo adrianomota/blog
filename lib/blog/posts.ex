@@ -20,9 +20,8 @@ defmodule Blog.Posts do
     |> Repo.insert()
   end
 
-  def update(id, attrs) do
-    id
-    |> get()
+  def update(post, attrs) do
+    post
     |> Post.changeset(attrs)
     |> Repo.update()
   end

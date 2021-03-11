@@ -44,15 +44,17 @@ defmodule BlogWeb.PostController do
     end
   end
 
-  def update(conn, %{"id" => id, "post" => post}) do
-    case Blog.Posts.update(id, post) do
+  def update(conn, %{"id" => id, "post" => params}) do
+    post_exists? = Blog.Posts.get(id)
+
+    case Blog.Posts.update(post_exists?, params) do
       {:ok, post} ->
         conn
         |> put_flash(:info, "Post atualizado com sucesso")
         |> redirect(to: Routes.post_path(conn, :show, post))
 
       {:error, changeset} ->
-        render(conn, "new.html", changeset: changeset)
+        render(conn, "edit.html", changeset: changeset, post: post_exists?)
     end
   end
 
@@ -66,7 +68,7 @@ defmodule BlogWeb.PostController do
       {:error, changeset} ->
         conn
         |> put_flash(:error, "Post não existe!")
-        |> render("index.html", changeset: changeset)
+        |> render("index.html", changeset: changeset, posts: Blog.Posts.list())
     end
   end
 end
