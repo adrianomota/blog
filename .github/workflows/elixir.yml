@@ -52,10 +52,11 @@ jobs:
     - name: Run coveralls
       run: MIX_ENV=test mix coveralls.html
     - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v1
+      uses: codecov/codecov-action@v1.2.2
       with:
         token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
         files: excoveralls.json
+        flags: exunit
         directory: ./cover/
         codecov_curl_args: -s
         verbose: true # optional (default = false)
