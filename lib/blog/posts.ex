@@ -32,99 +32,57 @@ defmodule Blog.Posts do
     |> Repo.delete()
   end
 
-  alias Blog.Posts.Comment
+  # alias Blog.Posts.Comment
 
-  @doc """
-  Returns the list of comments.
+  # @doc """
+  # Returns the list of comments.
 
-  ## Examples
+  # """
+  # def list_comments do
+  #   Repo.all(Comment)
+  # end
 
-      iex> list_comments()
-      [%Comment{}, ...]
+  # @doc """
+  # Gets a single comment.
 
-  """
-  def list_comments do
-    Repo.all(Comment)
-  end
+  # Raises `Ecto.NoResultsError` if the Comment does not exist.
 
-  @doc """
-  Gets a single comment.
+  # """
+  # def get_comment!(id), do: Repo.get!(Comment, id)
 
-  Raises `Ecto.NoResultsError` if the Comment does not exist.
+  # @doc """
+  # Creates a comment.
 
-  ## Examples
+  # """
+  # def create_comment(attrs \\ %{}) do
+  #   %Comment{}
+  #   |> Comment.changeset(attrs)
+  #   |> Repo.insert()
+  # end
 
-      iex> get_comment!(123)
-      %Comment{}
+  # @doc """
+  # Updates a comment.
 
-      iex> get_comment!(456)
-      ** (Ecto.NoResultsError)
+  # """
+  # def update_comment(%Comment{} = comment, attrs) do
+  #   comment
+  #   |> Comment.changeset(attrs)
+  #   |> Repo.update()
+  # end
 
-  """
-  def get_comment!(id), do: Repo.get!(Comment, id)
+  # @doc """
+  # Deletes a comment.
 
-  @doc """
-  Creates a comment.
+  # """
+  # def delete_comment(%Comment{} = comment) do
+  #   Repo.delete(comment)
+  # end
 
-  ## Examples
+  # @doc """
+  # Returns an `%Ecto.Changeset{}` for tracking comment changes.
 
-      iex> create_comment(%{field: value})
-      {:ok, %Comment{}}
-
-      iex> create_comment(%{field: bad_value})
-      {:error, %Ecto.Changeset{}}
-
-  """
-  def create_comment(attrs \\ %{}) do
-    %Comment{}
-    |> Comment.changeset(attrs)
-    |> Repo.insert()
-  end
-
-  @doc """
-  Updates a comment.
-
-  ## Examples
-
-      iex> update_comment(comment, %{field: new_value})
-      {:ok, %Comment{}}
-
-      iex> update_comment(comment, %{field: bad_value})
-      {:error, %Ecto.Changeset{}}
-
-  """
-  def update_comment(%Comment{} = comment, attrs) do
-    comment
-    |> Comment.changeset(attrs)
-    |> Repo.update()
-  end
-
-  @doc """
-  Deletes a comment.
-
-  ## Examples
-
-      iex> delete_comment(comment)
-      {:ok, %Comment{}}
-
-      iex> delete_comment(comment)
-      {:error, %Ecto.Changeset{}}
-
-  """
-  def delete_comment(%Comment{} = comment) do
-    Repo.delete(comment)
-  end
-
-  @doc """
-  Returns an `%Ecto.Changeset{}` for tracking comment changes.
-
-  ## Examples
-
-      iex> change_comment(comment)
-      %Ecto.Changeset{data: %Comment{}}
-
-  """
-  def change_comment(%Comment{} = comment, attrs \\ %{}) do
-    Comment.changeset(comment, attrs)
-  end
+  # """
+  # def change_comment(%Comment{} = comment, attrs \\ %{}) do
+  #   Comment.changeset(comment, attrs)
+  # end
 end
