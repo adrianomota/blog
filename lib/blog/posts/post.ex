@@ -8,7 +8,6 @@ defmodule Blog.Posts.Post do
   schema "posts" do
     field :title, :string
     field :description, :string
-
     timestamps()
   end
 
