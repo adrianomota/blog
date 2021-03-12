@@ -17,9 +17,9 @@ jobs:
         elixir-version: ${{matrix.elixir}} # Define the elixir version [required]
         otp-version: ${{matrix.otp}} # Define the OTP version [required]
 
-      - uses: actions/cache@v2
+    - uses: actions/cache@v2
         env:
-          cache-name: cache-elixir-deps
+        cache-name: cache-elixir-deps
         with:
           path: |
             deps
@@ -31,21 +31,21 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
 
-      - name: Fetch dependencies
-        run: mix deps.get
-      - name: ==> 🔎 Lint
-        run: mix credo --strict
+    - name: Fetch dependencies
+      run: mix deps.get
+    - name: ==> 🔎 Lint
+      run: mix credo --strict
 
   check_format:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-elixir@v1
-        with:
-          elixir-version: ${{matrix.elixir}} # Define the elixir version [required]
-          otp-version: ${{matrix.otp}} # Define the OTP version [required]
+    - uses: actions/checkout@v2
+    - uses: actions/setup-elixir@v1
+      with:
+        elixir-version: ${{matrix.elixir}} # Define the elixir version [required]
+        otp-version: ${{matrix.otp}} # Define the OTP version [required]
 
-      - uses: actions/cache@v2
+    - uses: actions/cache@v2
         env:
           cache-name: cache-elixir-deps
         with:
@@ -59,23 +59,23 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
 
-      - name: Fetch dependencies
-        run: mix deps.get
-      - name: ==> 🔎 Format check
-        run: mix format --check-formatted
+    - name: Fetch dependencies
+      run: mix deps.get
+    - name: ==> 🔎 Format check
+      run: mix format --check-formatted
 
   dialyze:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-elixir@v1
-        with:
-          elixir-version: ${{matrix.elixir}} # Define the elixir version [required]
-          otp-version: ${{matrix.otp}} # Define the OTP version [required]
+    - uses: actions/checkout@v2
+    - uses: actions/setup-elixir@v1
+      with:
+        elixir-version: ${{matrix.elixir}} # Define the elixir version [required]
+        otp-version: ${{matrix.otp}} # Define the OTP version [required]
 
-      - uses: actions/cache@v2
-        env:
-          cache-name: cache-elixir-deps
+    - uses: actions/cache@v2
+      env:
+        cache-name: cache-elixir-deps
         with:
           path: |
             deps
@@ -87,23 +87,23 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
 
-      - name: Fetch dependencies
-        run: mix deps.get
-      - name: ==> 🔎 Static dialyze
-        run: mix dialyzer
+    - name: Fetch dependencies
+      run: mix deps.get
+    - name: ==> 🔎 Static dialyze
+      run: mix dialyzer
 
   security:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-elixir@v1
-        with:
-          elixir-version: ${{matrix.elixir}} # Define the elixir version [required]
-          otp-version: ${{matrix.otp}} # Define the OTP version [required]
+    - uses: actions/checkout@v2
+    - uses: actions/setup-elixir@v1
+      with:
+        elixir-version: ${{matrix.elixir}} # Define the elixir version [required]
+        otp-version: ${{matrix.otp}} # Define the OTP version [required]
 
-      - uses: actions/cache@v2
-        env:
-          cache-name: cache-elixir-deps
+    - uses: actions/cache@v2
+      env:
+        cache-name: cache-elixir-deps
         with:
           path: |
             deps
@@ -115,23 +115,23 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
 
-      - name: Fetch dependencies
-        run: mix deps.get
-      - name: ==> 🔎 Sobelow Security
-        run: mix sobelow --config
+    - name: Fetch dependencies
+      run: mix deps.get
+    - name: ==> 🔎 Sobelow Security
+      run: mix sobelow --config
 
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-elixir@v1
-        with:
-          elixir-version: ${{matrix.elixir}} # Define the elixir version [required]
-          otp-version: ${{matrix.otp}} # Define the OTP version [required]
+    - uses: actions/checkout@v2
+    - uses: actions/setup-elixir@v1
+      with:
+        elixir-version: ${{matrix.elixir}} # Define the elixir version [required]
+        otp-version: ${{matrix.otp}} # Define the OTP version [required]
 
-      - uses: actions/cache@v2
-        env:
-          cache-name: cache-elixir-deps
+    - uses: actions/cache@v2
+      env:
+        cache-name: cache-elixir-deps
         with:
           path: |
             deps
@@ -143,11 +143,11 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
 
-      - name: ==> 🔎 Integrating test
-        run: mix coveralls.json
-      - uses: codecov/codecov-action@v1
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
+    - name: ==> 🔎 Integrating test
+      run: mix coveralls.json
+    - uses: codecov/codecov-action@v1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
 
     services:
       pg:
