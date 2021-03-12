@@ -158,7 +158,7 @@ jobs:
 
   deploy:
     name: Deploy Gigalixir
-    needs: build
+    needs: [lint, check_format, dialyze, security, test]
     runs-on: ubuntu-latest
 
     steps:
