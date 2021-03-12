@@ -46,12 +46,12 @@ jobs:
         otp-version: ${{matrix.otp}} # Define the OTP version [required]
 
     - uses: actions/cache@v2
-        env:
-          cache-name: cache-elixir-deps
-        with:
-          path: |
-            deps
-            _build
+      env:
+        cache-name: cache-elixir-deps
+      with:
+        path: |
+          deps
+          _build
 
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/mix.lock') }}
           restore-keys: |
@@ -76,10 +76,10 @@ jobs:
     - uses: actions/cache@v2
       env:
         cache-name: cache-elixir-deps
-        with:
-          path: |
-            deps
-            _build
+      with:
+        path: |
+          deps
+          _build
 
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/mix.lock') }}
           restore-keys: |
@@ -104,10 +104,10 @@ jobs:
     - uses: actions/cache@v2
       env:
         cache-name: cache-elixir-deps
-        with:
-          path: |
-            deps
-            _build
+      with:
+        path: |
+          deps
+          _build
 
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/mix.lock') }}
           restore-keys: |
@@ -132,10 +132,10 @@ jobs:
     - uses: actions/cache@v2
       env:
         cache-name: cache-elixir-deps
-        with:
-          path: |
-            deps
-            _build
+      with:
+        path: |
+          deps
+          _build
 
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/mix.lock') }}-test
           restore-keys: |
