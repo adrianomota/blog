@@ -12,6 +12,10 @@ defmodule Blog.Posts do
 
   def get(id), do: Repo.get(Post, id)
 
+  def get_with_comments(id) do
+    Repo.get(Post, id) |> Repo.preload(:comments)
+  end
+
   def get, do: Post.changeset(%Post{})
 
   def create(attrs \\ %{}) do
