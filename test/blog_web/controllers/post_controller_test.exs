@@ -1,4 +1,7 @@
 defmodule BlogWeb.PostControllerTest do
+  @moduledoc """
+  PostControllerTest module
+  """
   use BlogWeb.ConnCase
 
   @post_fixtures %{

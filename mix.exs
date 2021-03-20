@@ -1,4 +1,7 @@
 defmodule Blog.MixProject do
+  @moduledoc """
+  MixProject module
+  """
   use Mix.Project
 
   @github_url "https://github.com/adrianomota/blog"
