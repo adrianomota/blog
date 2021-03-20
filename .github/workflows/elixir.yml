@@ -13,7 +13,7 @@ jobs:
     strategy:
       matrix:
         otp: ['23.1.1']
-        elixir: ['1.11.3']
+        elixir: ['1.11.4']
     services:
       db:
         image: postgres:latest

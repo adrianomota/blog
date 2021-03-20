@@ -6,9 +6,15 @@
 //
 // Pass the token on params as below. Or remove it
 // from the params if you are not using authentication.
-import {Socket} from "phoenix"
+import {
+  Socket
+} from "phoenix"
 
-let socket = new Socket("/socket", {params: {token: window.userToken}})
+let socket = new Socket("/socket", {
+  params: {
+    token: window.userToken
+  }
+})
 
 // When you connect, you'll often need to authenticate the client.
 // For example, imagine you have an authentication plug, `MyAuth`,
@@ -24,7 +30,7 @@ let socket = new Socket("/socket", {params: {token: window.userToken}})
 //       plug :put_user_token
 //     end
 //
-//     defp put_user_token(conn, _) do
+// //     defp put_user_token(conn, _) do
 //       if current_user = conn.assigns[:current_user] do
 //         token = Phoenix.Token.sign(conn, "user socket", current_user.id)
 //         assign(conn, :user_token, token)
@@ -55,9 +61,62 @@ let socket = new Socket("/socket", {params: {token: window.userToken}})
 socket.connect()
 
 // Now that you are connected, you can join channels with a topic:
-let channel = socket.channel("topic:subtopic", {})
-channel.join()
-  .receive("ok", resp => { console.log("Joined successfully", resp) })
-  .receive("error", resp => { console.log("Unable to join", resp) })
 
-export default socket
+const clear_comment_field = () => document.getElementById('txt_comment').value = ""
+
+const send_comment = (channel, content) => channel.push('comment:add', {
+  content: content
+})
+
+const template = ({ content }) => {
+  return `<li class="collection-item avatar">
+            <img src="https://avatars.githubusercontent.com/u/5923649?s=400&u=93002841650e779969576d1128d6433750013d19&v=4"
+              alt="" class="circle">
+            <span class="title">Title</span>
+              <p>${content}</p>
+            <a href="#!" class="secondary-content">
+                  <i class="material-icons">grade</i>
+            </a>
+        </li>`;
+}
+
+const postComment = sended_comments => {
+  const comments = sended_comments.map(comment => {
+    console.log(comment.content)
+    return template(comment)
+  })
+
+  document.querySelector('.collection').innerHTML = comments.join('')
+
+  console.log("Joined successfully")
+}
+
+function add_comment({ comment }) {
+  console.log(`Chamou via broadcast => ${comment.content}`)
+  document.querySelector('.collection').innerHTML += template(comment)
+}
+
+const createSocket = post_id => {
+  let channel = socket.channel(`comments:${post_id}`, {})
+  channel.join()
+    .receive("ok", resp => {
+      postComment(resp.comments)
+    })
+    .receive("error", resp => {
+      console.log("Unable to join", resp)
+    })
+
+  channel.on(`comments:${post_id}:new`,  add_comment)
+
+  document.getElementById('btn_comment')
+    .addEventListener('click', () => {
+      const content = document.getElementById('txt_comment').value
+
+      send_comment(channel, content)
+
+      clear_comment_field()
+    })
+}
+
+
+window.createSocket = createSocket

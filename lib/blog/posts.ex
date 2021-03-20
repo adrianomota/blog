@@ -12,6 +12,10 @@ defmodule Blog.Posts do
 
   def get(id), do: Repo.get(Post, id)
 
+  def get_with_comments(id) do
+    Repo.get(Post, id) |> Repo.preload(:comments)
+  end
+
   def get, do: Post.changeset(%Post{})
 
   def create(attrs \\ %{}) do
@@ -31,58 +35,4 @@ defmodule Blog.Posts do
     |> get()
     |> Repo.delete()
   end
-
-  # alias Blog.Posts.Comment
-
-  # @doc """
-  # Returns the list of comments.
-
-  # """
-  # def list_comments do
-  #   Repo.all(Comment)
-  # end
-
-  # @doc """
-  # Gets a single comment.
-
-  # Raises `Ecto.NoResultsError` if the Comment does not exist.
-
-  # """
-  # def get_comment!(id), do: Repo.get!(Comment, id)
-
-  # @doc """
-  # Creates a comment.
-
-  # """
-  # def create_comment(attrs \\ %{}) do
-  #   %Comment{}
-  #   |> Comment.changeset(attrs)
-  #   |> Repo.insert()
-  # end
-
-  # @doc """
-  # Updates a comment.
-
-  # """
-  # def update_comment(%Comment{} = comment, attrs) do
-  #   comment
-  #   |> Comment.changeset(attrs)
-  #   |> Repo.update()
-  # end
-
-  # @doc """
-  # Deletes a comment.
-
-  # """
-  # def delete_comment(%Comment{} = comment) do
-  #   Repo.delete(comment)
-  # end
-
-  # @doc """
-  # Returns an `%Ecto.Changeset{}` for tracking comment changes.
-
-  # """
-  # def change_comment(%Comment{} = comment, attrs \\ %{}) do
-  #   Comment.changeset(comment, attrs)
-  # end
 end
